@@ -11,7 +11,7 @@ pipeline {
         stage('Git') {
             steps {
                 // Get some code from a GitHub repository
-                git url : 'https://github.com/Chethandoreswamy/Eureka-server.git', branch: 'main'
+                git url : 'https://github.com/Chethandoreswamy/Eureka-server.git', branch: 'master'
                 // Run Maven on a Unix agent.
 
                 // To run Maven on a Windows agent, use
@@ -50,9 +50,9 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 // git 'https://github.com/sep-2024-trivandrum/authentication-service'
-                bat "docker build -t registery-image ."
+                bat "docker build -t registry-image ."
                 bat "docker network create -d bridge chethan-network"
-			    bat "docker run --network chethan-network -p 8761:8761 -d --name registery-sr registery-image"
+			    bat "docker run --network chethan-network -p 8761:8761 -d --name registry-sr registry-image"
 
             }
 
